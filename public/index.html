@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TuitionCenter. — Management System</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Chart.js and Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+  <!-- LANDING & AUTHENTICATION PORTAL -->
+  <div id="landing-portal" class="landing-portal">
+    <!-- Animated Gradient Background -->
+    <div class="glow-bg">
+      <div class="g-circle gc-1"></div>
+      <div class="g-circle gc-2"></div>
+      <div class="g-circle gc-3"></div>
+    </div>
+
+    <!-- Transparent Glass Navbar -->
+    <header class="landing-navbar">
+      <div class="navbar-brand">
+        <i data-lucide="graduation-cap"></i>
+        <span>TuitionCenter.</span>
+      </div>
+      <nav class="navbar-links">
+        <a href="#portal-home" class="nav-link-landing active" data-slide="0"
+          onclick="handleSlideNav(event, 0)">Home</a>
+        <a href="#portal-features" class="nav-link-landing" data-slide="1" onclick="handleSlideNav(event, 1)">DBMS
+          Features</a>
+        <a href="#portal-about" class="nav-link-landing" data-slide="2" onclick="handleSlideNav(event, 2)">About Us</a>
+        <button class="btn btn-teal-outline" onclick="switchSlide(3)">Sign In</button>
+      </nav>
+    </header>
+
+    <!-- Main Sliding Viewport -->
+    <div class="slider-viewport">
+      <div class="slider-container" id="slider-container">
+
+        <!-- Slide 0: Hero / Home -->
+        <div class="portal-slide" id="slide-home">
+          <div class="hero-content">
+            <span class="pill-badge">DBMS MINI PROJECT</span>
+            <h1>Manage Your Tuition Center with Precision</h1>
+            <p>A normalized, 3NF MySQL relational database backing a state-of-the-art admin terminal with live logs,
+              alerts, and performance aggregates.</p>
+            <div class="hero-actions mt-lg">
+              <button class="btn btn-primary btn-glow btn-lg" onclick="switchSlide(3)">
+                <i data-lucide="shield-check"></i> Enter Command Portal
+              </button>
+              <button class="btn btn-outline btn-lg" onclick="switchSlide(1)">
+                Learn DBMS Features <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 1: Features -->
+        <div class="portal-slide" id="slide-features">
+          <div class="slide-content">
+            <h2 class="slide-title">DBMS Relational Architecture</h2>
+            <p class="slide-subtitle text-secondary">Robust database structures designed for performance and
+              consistency.</p>
+
+            <div class="features-grid-landing">
+              <div class="feature-card-landing">
+                <div class="feat-icon bg-indigo-light text-indigo">
+                  <i data-lucide="database"></i>
+                </div>
+                <h4>3NF Normalization</h4>
+                <p>Completely eliminates redundancy across 8 relational tables, enforcing domain consistency and keys.
+                </p>
+              </div>
+              <div class="feature-card-landing">
+                <div class="feat-icon bg-teal-light text-teal">
+                  <i data-lucide="shuffle"></i>
+                </div>
+                <h4>Triggers & DML</h4>
+                <p>Autonomous temporal checking dynamically overrides overdue invoices on insertion/update.</p>
+              </div>
+              <div class="feature-card-landing">
+                <div class="feat-icon bg-orange-light text-orange">
+                  <i data-lucide="shield-alert"></i>
+                </div>
+                <h4>Stored Procedure</h4>
+                <p>Transactional admissions check seats and throws database exceptions during roster limits.</p>
+              </div>
+              <div class="feature-card-landing">
+                <div class="feat-icon bg-red-light text-red">
+                  <i data-lucide="calculator"></i>
+                </div>
+                <h4>Dynamic Views</h4>
+                <p>Aggregates attendance rates and balances using zero-division guards and left outer joins.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: About Us -->
+        <div class="portal-slide" id="slide-about">
+          <div class="slide-content card-narrow">
+            <h2 class="slide-title">About The Project</h2>
+            <p class="slide-subtitle text-secondary">DBMS Mini Project - Semester IV</p>
+
+            <div class="about-card-landing">
+              <div class="about-header-landing">
+                <div class="avatar-large">DBMS</div>
+                <div>
+                  <h4>Tuition Center Management System</h4>
+                  <p class="text-secondary font-sm">Built for Database Management Systems Lab</p>
+                </div>
+              </div>
+              <div class="about-body-landing mt-md">
+                <p>This project showcases full-stack web application development integrated with native relational
+                  database constraints. It bridges the gap between state-of-the-art administrative tools and strict
+                  normal database rules.</p>
+                <div class="tech-tags mt-md">
+                  <span class="tag">Node.js (Express)</span>
+                  <span class="tag">Raw MySQL</span>
+                  <span class="tag">Vanilla CSS Grid</span>
+                  <span class="tag">Vanilla SPA Javascript</span>
+                  <span class="tag">Chart.js</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Login Screen -->
+        <div class="portal-slide" id="slide-login">
+          <div class="login-wrapper">
+            <div class="login-card-glass">
+              <div class="login-header text-center">
+                <div class="login-logo bg-indigo-light text-indigo">
+                  <i data-lucide="lock"></i>
+                </div>
+                <h3>Administrative Login</h3>
+                <p class="text-secondary font-sm">Verify your SQL command credentials.</p>
+              </div>
+
+              <form id="landing-login-form" class="login-form mt-md" onsubmit="handlePortalLogin(event)">
+                <div class="form-group">
+                  <label for="login-email">Admin Email</label>
+                  <div class="input-icon-wrapper">
+                    <i data-lucide="mail"></i>
+                    <input type="email" id="login-email" placeholder="admin@tuition.com" value="admin@tuition.com"
+                      required>
+                  </div>
+                </div>
+                <div class="form-group mt-md">
+                  <label for="login-password">System Password</label>
+                  <div class="input-icon-wrapper">
+                    <i data-lucide="key-round"></i>
+                    <input type="password" id="login-password" placeholder="••••••••" value="admin123" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg mt-lg">
+                  <i data-lucide="unlock"></i> Authenticate Credentials
+                </button>
+                <div class="login-footer mt-md">
+                  <span class="text-secondary font-xs"><i data-lucide="info" class="icon-inline"></i> Tip: Use default
+                    pre-loaded admin details to login.</span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- App Wrapper -->
+  <div class="app-container">
+
+    <!-- SLEEK SLATE SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <span class="brand-name">TuitionCenter.</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="#dashboard" class="nav-link active" data-page="dashboard">
+              <i data-lucide="layout-dashboard"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#students" class="nav-link" data-page="students">
+              <i data-lucide="users"></i>
+              <span>Students</span>
+            </a>
+          </li>
+          <li>
+            <a href="#tutors" class="nav-link" data-page="tutors">
+              <i data-lucide="user-check"></i>
+              <span>Tutors</span>
+            </a>
+          </li>
+          <li>
+            <a href="#batches" class="nav-link" data-page="batches">
+              <i data-lucide="calendar"></i>
+              <span>Batches</span>
+            </a>
+          </li>
+          <li>
+            <a href="#enrollments" class="nav-link" data-page="enrollments">
+              <i data-lucide="user-plus"></i>
+              <span>Enrollments</span>
+            </a>
+          </li>
+          <li>
+            <a href="#attendance" class="nav-link" data-page="attendance">
+              <i data-lucide="check-square"></i>
+              <span>Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a href="#fees" class="nav-link" data-page="fees">
+              <i data-lucide="credit-card"></i>
+              <span>Fees</span>
+            </a>
+          </li>
+          <li>
+            <a href="#subjects" class="nav-link" data-page="subjects">
+              <i data-lucide="book-open"></i>
+              <span>Subjects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#rooms" class="nav-link" data-page="rooms">
+              <i data-lucide="door-open"></i>
+              <span>Rooms</span>
+            </a>
+          </li>
+          <li>
+            <a href="#reports" class="nav-link" data-page="reports">
+              <i data-lucide="bar-chart-3"></i>
+              <span>Reports</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">DBMS</div>
+        <div class="user-info">
+          <span class="user-role">Administrator</span>
+          <span class="user-project">DBMS Mini Project</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="main-content">
+
+      <!-- TOP NAVIGATION HEADER -->
+      <header class="content-header">
+        <div class="header-left">
+          <h1 id="page-title">Dashboard</h1>
+          <p id="page-subtitle" class="text-secondary">Welcome to your tuition command center.</p>
+        </div>
+        <div class="header-right">
+          <div id="loading-spinner" class="spinner-container hidden">
+            <div class="spinner"></div>
+            <span>Syncing database...</span>
+          </div>
+          <div class="header-date">
+            <i data-lucide="clock"></i>
+            <span id="current-date-display">May 20, 2026</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE WRAPPERS -->
+      <div class="page-container">
+
+        <!-- ==========================================
+             1. DASHBOARD PAGE
+             ========================================== -->
+        <section id="page-dashboard" class="page-panel active">
+          <!-- Stat Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon bg-indigo-light text-indigo">
+                <i data-lucide="users"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label">Total Students</span>
+                <h3 id="stat-students">-</h3>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon bg-teal-light text-teal">
+                <i data-lucide="user-check"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label">Active Tutors</span>
+                <h3 id="stat-tutors">-</h3>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon bg-orange-light text-orange">
+                <i data-lucide="calendar"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label">Batches Scheduled</span>
+                <h3 id="stat-batches">-</h3>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon bg-red-light text-red">
+                <i data-lucide="alert-circle"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label">Outstanding Dues</span>
+                <h3 id="stat-fees">-</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Grid -->
+          <div class="charts-grid">
+            <div class="chart-card large">
+              <div class="chart-header">
+                <h3>Monthly Fee Revenue</h3>
+                <span class="badge bg-success-light text-success">Real-time collections</span>
+              </div>
+              <div class="chart-body">
+                <canvas id="revenueChart"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3>Attendance Summary</h3>
+                <span class="badge bg-secondary-light text-secondary">All-time logs</span>
+              </div>
+              <div class="chart-body donut-body">
+                <canvas id="attendanceChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats & Recent Activity -->
+          <div class="activity-grid">
+            <div class="activity-card card-style">
+              <div class="card-header">
+                <h3>Recent Activity Log</h3>
+                <i data-lucide="refresh-cw" class="icon-btn" onclick="loadDashboardStats()"></i>
+              </div>
+              <div class="card-body">
+                <ul id="activity-feed-list" class="activity-feed">
+                  <!-- Rendered dynamically -->
+                  <li class="empty-state-msg">No recent activity detected.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             2. STUDENTS PAGE
+             ========================================== -->
+        <section id="page-students" class="page-panel">
+          <div class="action-bar">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input type="text" id="student-search" placeholder="Search students by name, email or ID...">
+            </div>
+            <button class="btn btn-primary" onclick="openModal('modal-add-student')">
+              <i data-lucide="user-plus"></i> Add New Student
+            </button>
+          </div>
+
+          <div class="card-style table-wrapper">
+            <table class="table" id="students-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Date of Birth</th>
+                  <th>Address</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="students-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+            <div id="students-empty" class="empty-state hidden">
+              <i data-lucide="users" class="empty-icon"></i>
+              <h3>No Students Found</h3>
+              <p>Add a new student to get started managing enrollments.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             3. TUTORS PAGE
+             ========================================== -->
+        <section id="page-tutors" class="page-panel">
+          <div class="action-bar">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input type="text" id="tutor-search" placeholder="Search tutors by name, email or expertise...">
+            </div>
+            <button class="btn btn-primary" onclick="openModal('modal-add-tutor')">
+              <i data-lucide="user-plus"></i> Add New Tutor
+            </button>
+          </div>
+
+          <div class="card-style table-wrapper">
+            <table class="table" id="tutors-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tutor Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Subject Expertise</th>
+                  <th>Monthly Salary</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tutors-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+            <div id="tutors-empty" class="empty-state hidden">
+              <i data-lucide="user-check" class="empty-icon"></i>
+              <h3>No Tutors Found</h3>
+              <p>Add a new tutor to establish classes and assign batches.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             4. BATCHES PAGE
+             ========================================== -->
+        <section id="page-batches" class="page-panel">
+          <div class="action-bar">
+            <div class="filter-box">
+              <span>Filter by room availability, scheduled timings and strengths.</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('modal-add-batch')">
+              <i data-lucide="calendar"></i> Schedule New Batch
+            </button>
+          </div>
+
+          <div id="batches-grid" class="batches-grid">
+            <!-- Rendered dynamically as Notion-style cards -->
+          </div>
+
+          <div id="batches-empty" class="empty-state hidden">
+            <i data-lucide="calendar" class="empty-icon"></i>
+            <h3>No Scheduled Batches</h3>
+            <p>Create batches to connect subjects, rooms, and expert tutors.</p>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             5. ENROLLMENTS PAGE
+             ========================================== -->
+        <section id="page-enrollments" class="page-panel">
+          <div class="enrollment-layout">
+            <div class="enrollment-form-card card-style">
+              <div class="card-header">
+                <h3>Enroll Student in Class</h3>
+                <p class="text-secondary font-sm">DBMS Concepts: Stored Procedure check, M:N relationship</p>
+              </div>
+              <form id="enrollment-form" class="card-body">
+                <div class="form-group">
+                  <label for="enroll-student-select">Select Student <span class="required">*</span></label>
+                  <select id="enroll-student-select" required>
+                    <option value="">-- Choose Student --</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="enroll-batch-select">Select Batch Schedule <span class="required">*</span></label>
+                  <select id="enroll-batch-select" required onchange="checkBatchCapacityWarning()">
+                    <option value="">-- Choose Batch Schedule --</option>
+                  </select>
+                  <!-- Capacity Alert Warning Banner -->
+                  <div id="enrollment-capacity-warning" class="capacity-warning-banner hidden">
+                    <i data-lucide="alert-triangle"></i>
+                    <span id="capacity-warning-text">Warning: This batch is almost full!</span>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  <i data-lucide="user-plus"></i> Complete Enrollment
+                </button>
+              </form>
+            </div>
+
+            <div class="enrollment-list-card card-style table-wrapper">
+              <div class="card-header">
+                <h3>Current Enrollments List</h3>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Batch ID</th>
+                    <th>Subject</th>
+                    <th>Days & Timings</th>
+                    <th>Enrollment Date</th>
+                  </tr>
+                </thead>
+                <tbody id="enrollments-table-body">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+              <div id="enrollments-empty" class="empty-state hidden">
+                <i data-lucide="users" class="empty-icon"></i>
+                <h3>No Enrollments Logged</h3>
+                <p>Select a student and batch schedule to register enrollment.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             6. ATTENDANCE PAGE
+             ========================================== -->
+        <section id="page-attendance" class="page-panel">
+          <div class="action-bar bg-card p-sm card-style flex-row gap-md">
+            <div class="form-group flex-1 m-none">
+              <label for="attendance-batch-select" class="font-sm font-semibold">1. Select Scheduled Batch</label>
+              <select id="attendance-batch-select" onchange="loadAttendanceRoll()">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group flex-1 m-none">
+              <label for="attendance-date-input" class="font-sm font-semibold">2. Select Log Date</label>
+              <input type="date" id="attendance-date-input" onchange="loadAttendanceRoll()">
+            </div>
+          </div>
+
+          <div class="card-style table-wrapper mt-md">
+            <div class="card-header flex-row justify-between align-center border-bottom p-md">
+              <div>
+                <h3>Attendance Roll Call</h3>
+                <p id="attendance-meta-info" class="text-secondary font-sm">Please select a batch and date above.</p>
+              </div>
+              <button id="save-attendance-btn" class="btn btn-teal hidden" onclick="saveAttendanceLogs()">
+                <i data-lucide="save"></i> Save Attendance Logs
+              </button>
+            </div>
+
+            <table class="table" id="attendance-table">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Student Email</th>
+                  <th>Attendance Status</th>
+                </tr>
+              </thead>
+              <tbody id="attendance-table-body">
+                <tr>
+                  <td colspan="3" class="text-center text-secondary py-lg">
+                    Select batch and date to retrieve the student roster.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div id="attendance-empty" class="empty-state hidden">
+              <i data-lucide="users" class="empty-icon"></i>
+              <h3>No Students Enrolled</h3>
+              <p>Enroll students in this batch schedule to register attendance sheets.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             7. FEES PAGE
+             ========================================== -->
+        <section id="page-fees" class="page-panel">
+          <div class="action-bar">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input type="text" id="fees-search" placeholder="Search invoices by student name...">
+            </div>
+            <button class="btn btn-primary" onclick="openModal('modal-add-fee')">
+              <i data-lucide="plus-circle"></i> Generate Fee Bill
+            </button>
+          </div>
+
+          <div class="card-style table-wrapper">
+            <table class="table" id="fees-table">
+              <thead>
+                <tr>
+                  <th>Invoice ID</th>
+                  <th>Student Name</th>
+                  <th>Billed Amount</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                  <th>Payment Date</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="fees-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+
+            <div id="fees-empty" class="empty-state hidden">
+              <i data-lucide="credit-card" class="empty-icon"></i>
+              <h3>No Billing Records</h3>
+              <p>Generate fee bills for students to track active pending collections.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             8. REPORTS PAGE
+             ========================================== -->
+        <section id="page-reports" class="page-panel">
+          <div class="reports-container">
+            <div class="card-style table-wrapper">
+              <div class="card-header border-bottom p-md bg-light flex-row justify-between align-center">
+                <div>
+                  <h3>Student Performance Report View</h3>
+                  <p class="text-secondary font-sm">DBMS Concept: Combined `student_dashboard_view` calculations</p>
+                </div>
+                <button class="btn btn-outline font-sm" onclick="loadStudentPerformanceReport()">
+                  <i data-lucide="refresh-cw"></i> Refresh View
+                </button>
+              </div>
+
+              <table class="table table-sortable" id="reports-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Email Address</th>
+                    <th class="text-center cursor-pointer" onclick="sortTable(3)">
+                      Attendance Rate (%) <i data-lucide="chevrons-up-down" class="sort-icon-inline"></i>
+                    </th>
+                    <th class="text-center">Paid Bills</th>
+                    <th class="text-center">Pending Bills</th>
+                    <th class="text-center">Overdue Bills</th>
+                    <th class="text-center">Overall Billing Status</th>
+                  </tr>
+                </thead>
+                <tbody id="reports-table-body">
+                  <!-- Rendered dynamically from student_dashboard_view -->
+                </tbody>
+              </table>
+
+              <div id="reports-empty" class="empty-state hidden">
+                <i data-lucide="bar-chart-3" class="empty-icon"></i>
+                <h3>No Report Data Available</h3>
+                <p>Add students and log attendance/fees to compile reports.</p>
+              </div>
+            </div>
+
+            <!-- Reports Charts Grid -->
+            <div class="charts-grid mt-md">
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3>Monthly Fee Revenue Ledger</h3>
+                  <span class="badge bg-success-light text-success">Total Collections</span>
+                </div>
+                <div class="chart-body" style="min-height: 240px;">
+                  <canvas id="reportsRevenueChart"></canvas>
+                </div>
+              </div>
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3>Batch-Wise Student Count</h3>
+                  <span class="badge bg-indigo-light text-indigo">Strength distribution</span>
+                </div>
+                <div class="chart-body" style="min-height: 240px;">
+                  <canvas id="reportsBatchChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             8. SUBJECTS PAGE
+             ========================================== -->
+        <section id="page-subjects" class="page-panel">
+          <div class="action-bar">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input type="text" id="search-subjects" placeholder="Search subjects by name or level..."
+                oninput="filterSubjectsTable()">
+            </div>
+            <button class="btn btn-primary" onclick="openModal('modal-add-subject')">
+              <i data-lucide="plus"></i> Add Subject
+            </button>
+          </div>
+
+          <div class="card-style">
+            <div class="table-wrapper">
+              <table class="table" id="subjects-table">
+                <thead>
+                  <tr>
+                    <th>Subject ID</th>
+                    <th>Subject Name</th>
+                    <th>Academic Level</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="subjects-table-body">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+
+              <div id="subjects-empty" class="empty-state hidden">
+                <i data-lucide="book-open" class="empty-icon"></i>
+                <h3>No Subjects Registered</h3>
+                <p>Register subjects to assign to academic tutor batches.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             9. ROOMS PAGE
+             ========================================== -->
+        <section id="page-rooms" class="page-panel">
+          <div class="action-bar">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input type="text" id="search-rooms" placeholder="Search classrooms by name..."
+                oninput="filterRoomsTable()">
+            </div>
+            <button class="btn btn-primary" onclick="openModal('modal-add-room')">
+              <i data-lucide="plus"></i> Add Room
+            </button>
+          </div>
+
+          <div class="card-style">
+            <div class="table-wrapper">
+              <table class="table" id="rooms-table">
+                <thead>
+                  <tr>
+                    <th>Room ID</th>
+                    <th>Room Name</th>
+                    <th>Seating Capacity</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="rooms-table-body">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+
+              <div id="rooms-empty" class="empty-state hidden">
+                <i data-lucide="door-open" class="empty-icon"></i>
+                <h3>No Rooms Configured</h3>
+                <p>Configure study classrooms or science labs to map to batch limits.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================
+       MODAL WINDOWS & DIALOGS
+       ========================================== -->
+
+  <!-- Add Student Modal -->
+  <div id="modal-add-student" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Add Student Profile</h2>
+        <i data-lucide="x" class="modal-close" onclick="closeModal('modal-add-student')"></i>
+      </div>
+      <form id="form-add-student" onsubmit="submitStudentForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="student-name">Full Name <span class="required">*</span></label>
+            <input type="text" id="student-name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="student-email">Email Address <span class="required">*</span></label>
+            <input type="email" id="student-email" placeholder="john.doe@gmail.com" required>
+          </div>
+          <div class="form-group">
+            <label for="student-phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="student-phone" placeholder="+1 987 654 321" required>
+          </div>
+          <div class="form-group">
+            <label for="student-dob">Date of Birth <span class="required">*</span></label>
+            <input type="date" id="student-dob" required>
+          </div>
+          <div class="form-group">
+            <label for="student-address">Residential Address <span class="required">*</span></label>
+            <textarea id="student-address" placeholder="123 Baker St, London" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-student')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Tutor Modal -->
+  <div id="modal-add-tutor" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Add Tutor Profile</h2>
+        <i data-lucide="x" class="modal-close" onclick="closeModal('modal-add-tutor')"></i>
+      </div>
+      <form id="form-add-tutor" onsubmit="submitTutorForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="tutor-name">Full Name <span class="required">*</span></label>
+            <input type="text" id="tutor-name" placeholder="Marie Curie" required>
+          </div>
+          <div class="form-group">
+            <label for="tutor-email">Email Address <span class="required">*</span></label>
+            <input type="email" id="tutor-email" placeholder="marie.curie@tuition.com" required>
+          </div>
+          <div class="form-group">
+            <label for="tutor-phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="tutor-phone" placeholder="+1 987 654 321" required>
+          </div>
+          <div class="form-group">
+            <label for="tutor-expertise">Subject Expertise <span class="required">*</span></label>
+            <input type="text" id="tutor-expertise" placeholder="Chemistry" required>
+          </div>
+          <div class="form-group">
+            <label for="tutor-salary">Monthly Salary ($) <span class="required">*</span></label>
+            <input type="number" id="tutor-salary" placeholder="5000" min="0" step="0.01" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-tutor')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Tutor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Schedule Batch Modal -->
+  <div id="modal-add-batch" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Schedule New Batch</h2>
+        <i data-lucide="x" class="modal-close" onclick="closeModal('modal-add-batch')"></i>
+      </div>
+      <form id="form-add-batch" onsubmit="submitBatchForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="batch-subject">Select Subject <span class="required">*</span></label>
+            <select id="batch-subject" required>
+              <option value="">-- Choose Subject --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="batch-tutor">Select Tutor <span class="required">*</span></label>
+            <select id="batch-tutor" required>
+              <option value="">-- Choose Tutor --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="batch-room">Select Classroom Room <span class="required">*</span></label>
+            <select id="batch-room" required>
+              <option value="">-- Choose Room --</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="batch-timings">Scheduled Timings <span class="required">*</span></label>
+              <input type="text" id="batch-timings" placeholder="16:00 - 18:00" required>
+            </div>
+            <div class="form-group flex-1">
+              <label for="batch-strength">Max Capacity <span class="required">*</span></label>
+              <input type="number" id="batch-strength" placeholder="15" min="1" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="batch-days">Days of Week <span class="required">*</span></label>
+            <input type="text" id="batch-days" placeholder="Monday, Wednesday, Friday" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-batch')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Schedule Batch</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Generate Fee Modal -->
+  <div id="modal-add-fee" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Generate Student Bill</h2>
+        <i data-lucide="x" class="modal-close" onclick="closeModal('modal-add-fee')"></i>
+      </div>
+      <form id="form-add-fee" onsubmit="submitFeeForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="fee-student">Select Student Recipient <span class="required">*</span></label>
+            <select id="fee-student" required>
+              <option value="">-- Choose Student --</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="fee-amount">Billing Amount ($) <span class="required">*</span></label>
+              <input type="number" id="fee-amount" placeholder="300.00" min="0" step="0.01" required>
+            </div>
+            <div class="form-group flex-1">
+              <label for="fee-due-date">Due Date <span class="required">*</span></label>
+              <input type="date" id="fee-due-date" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-fee')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Generate Invoice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Subject Modal -->
+  <div id="modal-add-subject" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Add New Subject</h2>
+        <i data-lucide="x" class="modal-close" onclick="closeModal('modal-add-subject')"></i>
+      </div>
+      <form id="form-add-subject" onsubmit="submitSubjectForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="subject-name-input">Subject Name <span class="required">*</span></label>
+            <input type="text" id="subject-name-input" placeholder="e.g. Organic Chemistry" required>
+          </div>
+          <div class="form-group">
+            <label for="subject-level-input">Academic Level <span class="required">*</span></label>
+            <select id="subject-level-input" required>
+              <option value="">-- Choose Level --</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-subject')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Subject</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Room Modal -->
+  <div id="modal-add-room" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Add New Classroom Room</h2>
+        <i data-lucide="x" class="modal-close" onclick="closeModal('modal-add-room')"></i>
+      </div>
+      <form id="form-add-room" onsubmit="submitRoomForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="room-name-input">Room Name <span class="required">*</span></label>
+            <input type="text" id="room-name-input" placeholder="e.g. Omega Hall" required>
+          </div>
+          <div class="form-group">
+            <label for="room-capacity-input">Room Seating Capacity <span class="required">*</span></label>
+            <input type="number" id="room-capacity-input" placeholder="e.g. 30" min="1" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-room')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Room</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="modal-delete-confirm" class="modal-overlay">
+    <div class="modal-card modal-sm">
+      <div class="modal-header danger-header">
+        <h2>Confirm Deletion</h2>
+        <i data-lucide="x" class="modal-close" onclick="closeModal('modal-delete-confirm')"></i>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to permanently delete this profile record?</p>
+        <p class="warning-text mt-xs"><i data-lucide="alert-triangle" class="icon-inline"></i> Warning: This action will
+          cascade-delete all active enrollments, attendance, and fee logs associated with this record.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('modal-delete-confirm')">Cancel</button>
+        <button type="button" class="btn btn-danger" id="delete-confirm-btn">Permanently Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Core Javascript Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
